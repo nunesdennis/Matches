@@ -54,7 +54,9 @@ final class APIClient: APIClientProtocol {
     // MARK: - Public Methods
     func request(endpoint: EndpointProtocol, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = makeRequest(endpoint) else {
-            completion(.failure(RequestError.noURL))
+            DispatchQueue.main.async {
+                completion(.failure(RequestError.noURL))
+            }
             return
         }
 
