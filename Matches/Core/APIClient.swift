@@ -59,22 +59,24 @@ final class APIClient: APIClientProtocol {
         }
 
         session.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                completion(.failure(RequestError.api(error: error)))
-                return
+            DispatchQueue.main.async {
+                if let error = error {
+                    completion(.failure(RequestError.api(error: error)))
+                    return
+                }
+                
+                guard (response as? HTTPURLResponse) != nil else {
+                    completion(.failure(RequestError.noResponse))
+                    return
+                }
+                
+                guard let data = data else {
+                    completion(.failure(RequestError.noData))
+                    return
+                }
+                
+                completion(.success(data))
             }
-
-            guard (response as? HTTPURLResponse) != nil else {
-                completion(.failure(RequestError.noResponse))
-                return
-            }
-
-            guard let data = data else {
-                completion(.failure(RequestError.noData))
-                return
-            }
-
-            completion(.success(data))
         }.resume()
     }
 }
