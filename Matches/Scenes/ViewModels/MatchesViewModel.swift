@@ -23,8 +23,8 @@ final class MatchesViewModel {
     // MARK: - Private Properties
     
     private var sortBy: String?
-    private var pageNumber: Int?
-    private var perPage: Int?
+    private var pageNumber: Int = 1
+    private var perPage: Int = 50
     private var params: MatchListParams {
         MatchListParams(sort: sortBy, page: pageNumber, perPage: perPage)
     }
@@ -60,6 +60,7 @@ extension MatchesViewModel: MatchesViewModelProtocol {
         service.fetchMatchList(params: params) {[unowned self] result in
             switch result {
             case .success(let matches):
+                pageNumber += 1
                 let cellViewModels = createCellViewModels(models: matches)
                 completion(.success(cellViewModels))
             case .failure(let error):

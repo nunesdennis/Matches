@@ -20,14 +20,17 @@ protocol APIClientProtocol {
 
 final class APIClient: APIClientProtocol {
     // MARK: - Properties
+    
     let session: URLSession
 
     // MARK: - Initialization
+    
     init(session: URLSession = URLSession.shared) {
         self.session = session
     }
     
     // MARK: - Private Methods
+    
     private func getHeaderUpdated(endpoint: EndpointProtocol) -> [String : String] {
         var header = endpoint.header
         if endpoint.isTokenNeeded {
@@ -41,7 +44,6 @@ final class APIClient: APIClientProtocol {
         guard let url = endpoint.url else {
             return nil
         }
-        
         var request = URLRequest(url: url,
                                  cachePolicy: .useProtocolCachePolicy,
                                  timeoutInterval: 10.0)
@@ -52,6 +54,7 @@ final class APIClient: APIClientProtocol {
     }
     
     // MARK: - Public Methods
+    
     func request(endpoint: EndpointProtocol, completion: @escaping (Result<Data, Error>) -> Void) {
         guard let request = makeRequest(endpoint) else {
             DispatchQueue.main.async {

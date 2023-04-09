@@ -29,6 +29,9 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
         tableView.backgroundView = spinner
         tableView.backgroundColor = .clear
         tableView.tableFooterView = UIView()
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.tintColor = .white
+        tableView.refreshControl?.addTarget(self, action: #selector(pulledToRefresh), for: .valueChanged)
         
         return tableView
     }()
@@ -81,9 +84,10 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
         viewModel.loadMatches { [unowned self] result in
             switch result {
             case .success(let matchlist):
-                matches = matchlist
+                matches.append(contentsOf: matchlist)
                 
                 DispatchQueue.main.async { [unowned self] in
+                    tableView.refreshControl?.endRefreshing()
                     tableView.reloadData()
                     spinner.stopAnimating()
                 }
@@ -92,6 +96,11 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
                 showAlert(with: error.title, message: error.description, andButtonTitle: error.buttonName)
             }
         }
+    }
+    
+    @objc
+    private func pulledToRefresh() {
+        loadMatches()
     }
 }
 
