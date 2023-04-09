@@ -9,7 +9,12 @@
 // MARK: - General
 "General.Alert.title" = "Atenção";
 "General.Alert.Button.title" = "Ok";
+"General.Date.error" = "Erro";
 
 // MARK: - Matches
 "Matches.Navigation.title" = "Participantes";
 "Matches.TableView.MatchCell.Versus.title" = "VS";
+
+// MARK: - Match Time View
+"MatchTime.nowMessage" = "Agora";
+"MatchTime.todayMessage" = "Hoje";

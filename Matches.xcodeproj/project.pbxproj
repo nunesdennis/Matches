@@ -46,6 +46,8 @@
 		B35CF2B029E0A5500047E781 /* LeagueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CF2AF29E0A5500047E781 /* LeagueModel.swift */; };
 		B35CF2B829E1DC2A0047E781 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CF2B729E1DC2A0047E781 /* CardView.swift */; };
 		B35CF2BA29E1EF740047E781 /* OpponentVersusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CF2B929E1EF740047E781 /* OpponentVersusView.swift */; };
+		B35CF2C029E2F5890047E781 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CF2BF29E2F5890047E781 /* Date+Extensions.swift */; };
+		B35CF2C229E2FE390047E781 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35CF2C129E2FE390047E781 /* UIColor+Extensions.swift */; };
 		B3D6E12229DEF41C0031EDF0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D6E12129DEF41C0031EDF0 /* Colors.swift */; };
 		B3D6E13129DF04840031EDF0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3D6E12829DF01360031EDF0 /* Roboto-Black.ttf */; };
 		B3D6E13229DF04870031EDF0 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3D6E12C29DF01360031EDF0 /* Roboto-BlackItalic.ttf */; };
@@ -124,6 +126,8 @@
 		B35CF2AF29E0A5500047E781 /* LeagueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueModel.swift; sourceTree = "<group>"; };
 		B35CF2B729E1DC2A0047E781 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		B35CF2B929E1EF740047E781 /* OpponentVersusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpponentVersusView.swift; sourceTree = "<group>"; };
+		B35CF2BF29E2F5890047E781 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		B35CF2C129E2FE390047E781 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		B3D6E12129DEF41C0031EDF0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B3D6E12529DF01350031EDF0 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		B3D6E12629DF01350031EDF0 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -187,6 +191,7 @@
 		B300138D29DCF4A70037FE18 /* Matches */ = {
 			isa = PBXGroup;
 			children = (
+				B35CF2BE29E2F5770047E781 /* Extensions */,
 				B3D6E12429DF011F0031EDF0 /* fonts */,
 				B3D6E12029DEF40A0031EDF0 /* UI */,
 				B356100E29DDB07E006612B1 /* Scenes */,
@@ -272,6 +277,15 @@
 				B35CF2A629E095950047E781 /* ImageCache.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B35CF2BE29E2F5770047E781 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B35CF2BF29E2F5890047E781 /* Date+Extensions.swift */,
+				B35CF2C129E2FE390047E781 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		B3D6E11E29DEF2650031EDF0 /* Views */ = {
@@ -481,6 +495,7 @@
 				B35CF2AC29E0A0E30047E781 /* OpponentModel.swift in Sources */,
 				B35CF29929E076170047E781 /* OpponentVersusViewModel.swift in Sources */,
 				B300139329DCF4A70037FE18 /* MatchesViewController.swift in Sources */,
+				B35CF2C229E2FE390047E781 /* UIColor+Extensions.swift in Sources */,
 				B356102029DDF2E4006612B1 /* EndpointProtocol.swift in Sources */,
 				B356101429DDB380006612B1 /* MatchesViewModel.swift in Sources */,
 				B356101929DDE20E006612B1 /* APIClient.swift in Sources */,
@@ -497,6 +512,7 @@
 				B35CF28429E061F70047E781 /* ViewControllerEssentialProtocol.swift in Sources */,
 				B35CF2A529E07E740047E781 /* CardViewModel.swift in Sources */,
 				B35CF28629E065730047E781 /* MatchesError.swift in Sources */,
+				B35CF2C029E2F5890047E781 /* Date+Extensions.swift in Sources */,
 				B35CF29729E075C90047E781 /* OpponentViewModel.swift in Sources */,
 				B356101C29DDE306006612B1 /* MatchesService.swift in Sources */,
 				B35CF29129E06FE60047E781 /* OpponentView.swift in Sources */,

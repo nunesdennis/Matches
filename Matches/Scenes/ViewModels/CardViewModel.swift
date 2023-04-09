@@ -26,7 +26,7 @@ class CardViewModel {
         
         opponentVersusViewModel = versusViewModel
         leagueSerieViewModel = leagueViewModel
-        matchTimeViewModel = MatchTimeViewModel(dateString: matchModel.beginAt)
+        matchTimeViewModel = MatchTimeViewModel(beginAt: matchModel.beginAt, endAt: matchModel.endAt)
     }
     
     private static func createLeagueSerieViewModel(matchModel: MatchModel, imageCache: ImageCacheProtocol) -> LeagueSerieViewModel? {
