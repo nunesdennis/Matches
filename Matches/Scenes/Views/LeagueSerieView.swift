@@ -18,7 +18,7 @@ class LeagueSerieView: UIView {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
-        imgView.image = viewModel.image
+        imgView.image = viewModel.imagePlaceHolder
         imgView.translatesAutoresizingMaskIntoConstraints = false
         
         return imgView
@@ -50,7 +50,7 @@ class LeagueSerieView: UIView {
     init(leagueSerieViewModel: LeagueSerieViewModel) {
         viewModel = leagueSerieViewModel
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
+        setupViews()
         setupContraints()
     }
     
@@ -60,6 +60,11 @@ class LeagueSerieView: UIView {
   
     // MARK: - Private Methods
 
+    private func setupViews() {
+        translatesAutoresizingMaskIntoConstraints = false
+        viewModel.getImage(to: leagueSerieImage)
+    }
+    
     private func setupContraints() {
         addSubview(stackView)
 

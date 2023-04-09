@@ -8,6 +8,14 @@
 import UIKit
 
 struct OpponentViewModel {
-    var image: UIImage
+    let imagePlaceHolder: UIImage
+    let imageUrl: String?
+    let id: Int
     var name: String
+    
+    func getImage(to imageView: UIImageView) {
+        ImageFetcher.shared.fetchImage(fromPhotoURL: imageUrl,
+                                       id: id,
+                                       to: imageView)
+    }
 }

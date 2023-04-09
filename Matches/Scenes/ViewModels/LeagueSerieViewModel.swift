@@ -8,6 +8,14 @@
 import UIKit
 
 struct LeagueSerieViewModel {
-    var image: UIImage
-    var title: String
+    let imagePlaceHolder: UIImage
+    let imageUrl: String?
+    let id: Int
+    let title: String
+    
+    func getImage(to imageView: UIImageView) {
+        ImageFetcher.shared.fetchImage(fromPhotoURL: imageUrl,
+                                       id: id,
+                                       to: imageView)
+    }
 }

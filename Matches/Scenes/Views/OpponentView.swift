@@ -18,7 +18,7 @@ class OpponentView: UIView {
         let imgView = UIImageView()
         imgView.contentMode = .scaleAspectFit
         imgView.clipsToBounds = true
-        imgView.image = viewModel.image
+        imgView.image = viewModel.imagePlaceHolder
         imgView.translatesAutoresizingMaskIntoConstraints = false
         
         return imgView
@@ -49,7 +49,7 @@ class OpponentView: UIView {
     init(opponentViewModel: OpponentViewModel) {
         viewModel = opponentViewModel
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
+        setupViews()
         setupContraints()
     }
     
@@ -58,6 +58,11 @@ class OpponentView: UIView {
     }
   
     // MARK: - Private Methods
+    
+    private func setupViews() {
+        translatesAutoresizingMaskIntoConstraints = false
+        viewModel.getImage(to: opponentImage)
+    }
     
     private func setupContraints() {
         addSubview(stackView)

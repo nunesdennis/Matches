@@ -23,6 +23,7 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.allowsSelection = false
         tableView.rowHeight = cellRowHeight
         tableView.register(MatchCell.self, forCellReuseIdentifier: String(describing: MatchCell.self))
         tableView.backgroundView = spinner

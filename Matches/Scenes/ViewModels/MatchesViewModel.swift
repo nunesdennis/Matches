@@ -8,7 +8,6 @@
 import UIKit
 
 protocol MatchesViewModelProtocol {
-    var imageCache: ImageCacheProtocol { get }
     var navigationTitle: String { get }
     func loadMatches(_ completion: @escaping (Result<[CardViewModel], MatchesError>) -> Void)
 }
@@ -16,8 +15,9 @@ protocol MatchesViewModelProtocol {
 final class MatchesViewModel {
     // MARK: - Constants
     
-    var errorAlertTitle: String { Localized("General.Alert.title") }
-    var okButtonTitle: String { Localized("General.Alert.Button.title") }
+    private var errorAlertTitle: String { Localized("General.Alert.title") }
+    private var okButtonTitle: String { Localized("General.Alert.Button.title") }
+    
     var navigationTitle: String { Localized("Matches.Navigation.title") }
     
     // MARK: - Private Properties
@@ -31,18 +31,15 @@ final class MatchesViewModel {
     
     // MARK: - Properties
     
-    let imageCache: ImageCacheProtocol
     let coordinator: MatchesCoordinatorProtocol
     let service: MatchesServiceProtocol
     
     // MARK: - Initialization
     
     init(service: MatchesServiceProtocol,
-         coordinator: MatchesCoordinatorProtocol,
-         imageCache: ImageCacheProtocol = ImageCache()) {
+         coordinator: MatchesCoordinatorProtocol) {
         self.service = service
         self.coordinator = coordinator
-        self.imageCache = imageCache
     }
     
     private func Localized(_ key: String) -> String {
@@ -51,7 +48,7 @@ final class MatchesViewModel {
     
     private func createCellViewModels(models: [MatchModel]) -> [CardViewModel] {
         return models.compactMap { model in
-            CardViewModel(matchModel: model, imageCache: imageCache)
+            CardViewModel(matchModel: model)
         }
     }
 }

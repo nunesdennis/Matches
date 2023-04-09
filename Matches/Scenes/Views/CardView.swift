@@ -29,7 +29,7 @@ class CardView: UIView {
     private lazy var leagueSerieView: LeagueSerieView = {
         let viewModel = viewModel.leagueSerieViewModel
         let view = LeagueSerieView(leagueSerieViewModel: viewModel)
-//        view.backgroundColor = .yellow
+
         return view
     }()
     
@@ -38,17 +38,8 @@ class CardView: UIView {
         
         return MatchTimeView(matchTimeViewModel: viewModel)
     }()
-    
-//    private lazy var stackView: UIStackView = {
-//        let stackView = UIStackView(arrangedSubviews: [opponentVersusView, leagueSerieView])
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.spacing = Space.base04
-//        stackView.axis = .vertical
-//
-//        return stackView
-//    }()
 
-    // MARK: Initialization
+    // MARK: - Initialization
 
     init(with viewModel: CardViewModel) {
         self.viewModel = viewModel
@@ -60,6 +51,8 @@ class CardView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Private Methods
     
     private func setupView() {
         translatesAutoresizingMaskIntoConstraints = false
