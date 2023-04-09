@@ -13,6 +13,9 @@ class CardView: UIView {
     var opponentVersusViewHeight: CGFloat = 45.0
     var leagueSerieViewBottomAnchor: CGFloat = -Space.base04
     var leagueSerieViewLeadingAnchor: CGFloat = 15.0
+    var lineViewTopAnchor: CGFloat = -18.0
+    var lineViewBottomAnchor: CGFloat = -Space.base04
+    var lineViewHeightAnchor: CGFloat = 1.0
     
     // MARK: - Properties
     
@@ -37,6 +40,13 @@ class CardView: UIView {
         let viewModel = viewModel.matchTimeViewModel
         
         return MatchTimeView(matchTimeViewModel: viewModel)
+    }()
+    
+    private lazy var lineView: UIView = {
+        let view = UIView(frame: .zero)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white20
+        return view
     }()
 
     // MARK: - Initialization
@@ -64,6 +74,12 @@ class CardView: UIView {
         addSubview(matchTimeView)
         addSubview(opponentVersusView)
         addSubview(leagueSerieView)
+        addSubview(lineView)
+        
+        NSLayoutConstraint.activate([
+            matchTimeView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            matchTimeView.topAnchor.constraint(equalTo: self.topAnchor)
+        ])
         
         NSLayoutConstraint.activate([
             opponentVersusView.topAnchor.constraint(equalTo: self.topAnchor, constant: opponentVersusViewHeight),
@@ -71,8 +87,11 @@ class CardView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            matchTimeView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            matchTimeView.topAnchor.constraint(equalTo: self.topAnchor)
+            lineView.heightAnchor.constraint(equalToConstant: lineViewHeightAnchor),
+            lineView.topAnchor.constraint(equalTo: opponentVersusView.bottomAnchor, constant: lineViewTopAnchor),
+            lineView.bottomAnchor.constraint(equalTo: leagueSerieView.topAnchor, constant: lineViewBottomAnchor),
+            lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([

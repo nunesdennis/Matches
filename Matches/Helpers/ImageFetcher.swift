@@ -8,7 +8,7 @@
 import UIKit
 
 class ImageFetcher {
-    
+    // MARK: - Private Properties
     private let imagePlaceHolderName = "teamPlaceHolder"
     private let imageCache: ImageCacheProtocol = ImageCache()
     
@@ -18,6 +18,8 @@ class ImageFetcher {
     }()
 
     private init() {}
+    
+    // MARK: - Methods
     
     func fetchImage(fromPhotoURL url: String?, id: Int, to imageView: UIImageView) {
         var newImage = UIImage(named: imagePlaceHolderName) ?? UIImage()
