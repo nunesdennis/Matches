@@ -48,6 +48,7 @@ struct MatchTimeViewModel {
     private func formatAsDate(from dateString: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale = Locale(identifier: "pt_br")
         
         return dateFormatter.date(from: dateString)
     }
@@ -55,6 +56,7 @@ struct MatchTimeViewModel {
     private func formatAsWeek(from date: Date) -> String {
         let dateFormatterWeek = DateFormatter()
         dateFormatterWeek.dateFormat = "EEE, HH:mm"
+        dateFormatterWeek.locale = Locale(identifier: "pt_br")
         
         return dateFormatterWeek.string(from: date)
     }
@@ -62,6 +64,7 @@ struct MatchTimeViewModel {
     private func formatAsToday(from date: Date) -> String {
         let dateFormatterHour = DateFormatter()
         dateFormatterHour.dateFormat = "HH:mm"
+        dateFormatterHour.locale = Locale(identifier: "pt_br")
         let hour = dateFormatterHour.string(from: date)
         
         return todayMessage + ", " + hour
@@ -76,6 +79,7 @@ struct MatchTimeViewModel {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        dateFormatter.locale = Locale(identifier: "pt_br")
         
         guard let date = dateFormatter.date(from: beginAt) else {
             return dateError
