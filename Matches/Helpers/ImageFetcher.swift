@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageFetcher {
+final class ImageFetcher {
     // MARK: - Private Properties
     private let imagePlaceHolderName = "teamPlaceHolder"
     private let imageCache: ImageCacheProtocol = ImageCache()

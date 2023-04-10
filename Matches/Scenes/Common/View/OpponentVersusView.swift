@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OpponentVersusView: UIView {
+final class OpponentVersusView: UIView {
     // MARK: - Constants
     
     enum Alpha {

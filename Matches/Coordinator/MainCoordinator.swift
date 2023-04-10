@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainCoordinator: CoordinatorProtocol {
+final class MainCoordinator: CoordinatorProtocol {
     // MARK: - Properties
     var parentCoordinator: CoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
@@ -26,6 +26,7 @@ class MainCoordinator: CoordinatorProtocol {
     
     private func goToMainViewController() {
         let coordinator = MatchesCoordinator(navigationController: navigationController)
+        coordinator.parentCoordinator = self
         childCoordinators.append(coordinator)
         coordinator.start()
     }

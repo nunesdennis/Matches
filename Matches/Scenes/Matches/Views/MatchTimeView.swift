@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchTimeView: UIView {
+final class MatchTimeView: UIView {
     // MARK: - Constants
     
     var labelHeight: CGFloat = 10.0

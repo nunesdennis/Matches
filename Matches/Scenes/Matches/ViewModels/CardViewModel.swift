@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardViewModel {
+final class CardViewModel {
     // MARK: - Constants
     
     static let imagePlaceHolderName = "teamPlaceHolder"
@@ -42,10 +42,13 @@ class CardViewModel {
     // MARK: - Private Methods
     
     private static func createLeagueSerieViewModel(matchModel: MatchModel) -> LeagueSerieViewModel? {
+        let serieName = matchModel.serie.name ?? matchModel.serie.fullName
+        let title = matchModel.league.name + " " + serieName
+        
         return .init(imagePlaceHolder: placeHolder,
                      imageUrl: matchModel.league.imageUrl,
                      id: matchModel.league.id,
-                     title: matchModel.league.name)
+                     title: title)
     }
     
     private static func createOpponentVersusViewModel(matchModel: MatchModel) -> OpponentVersusViewModel? {

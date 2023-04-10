@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MatchCell: UITableViewCell {
+final class MatchCell: UITableViewCell {
     // MARK: - Properties
     
     var viewModel: CardViewModel?

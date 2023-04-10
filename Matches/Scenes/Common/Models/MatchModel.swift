@@ -46,7 +46,6 @@ struct VideogameVersionModel: Decodable {}
 struct VideogameModel: Decodable {}
 struct TournamentModel: Decodable {}
 struct StreamListModel: Decodable {}
-struct SerieModel: Decodable {}
 struct ResultModel: Decodable {}
 struct LiveModel: Decodable {}
 struct GameModel: Decodable {}

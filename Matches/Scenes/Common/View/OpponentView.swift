@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OpponentView: UIView {
+final class OpponentView: UIView {
     // MARK: - Properties
     
     var viewModel: OpponentViewModel

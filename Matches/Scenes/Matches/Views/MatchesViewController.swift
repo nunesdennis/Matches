@@ -9,7 +9,7 @@ import UIKit
 
 protocol MatchesViewControllerProtocol where Self: UIViewController {}
 
-class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
+final class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
     // MARK: - Constants
     
     let cellRowHeight: CGFloat = 200
@@ -42,7 +42,7 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
     
     // MARK: - Initialization
     
-    init(viewModel: MatchesViewModel) {
+    init(viewModel: MatchesViewModelProtocol) {
         self.viewModel = viewModel
         
         super.init(nibName: nil, bundle: nil)

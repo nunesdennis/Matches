@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CardView: UIView {
+final class CardView: UIView {
     // MARK: - Constants
     
     var opponentVersusViewHeight: CGFloat = 45.0

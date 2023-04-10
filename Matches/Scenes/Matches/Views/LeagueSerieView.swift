@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeagueSerieView: UIView {
+final class LeagueSerieView: UIView {
     // MARK: - Properties
     
     var viewModel: LeagueSerieViewModel
