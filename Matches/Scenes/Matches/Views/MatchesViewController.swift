@@ -113,7 +113,8 @@ extension MatchesViewController: MatchesViewControllerProtocol {}
 
 extension MatchesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cardsViewModel.count
+        print(cardsViewModel.count)
+        return cardsViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

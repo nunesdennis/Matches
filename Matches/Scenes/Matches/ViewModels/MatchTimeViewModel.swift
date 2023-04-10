@@ -16,11 +16,11 @@ struct MatchTimeViewModel {
     
     // MARK: - Properties
     
-    let beginAt: String
+    var beginAt: String?
     var endAt: String?
     
     var beginAtDate: Date? {
-       formatAsDate(from: beginAt)
+       formatAsDate(from: beginAt ?? String())
     }
     
     var endAtDate: Date? {
@@ -81,7 +81,7 @@ struct MatchTimeViewModel {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
         dateFormatter.locale = Locale(identifier: "pt_br")
         
-        guard let date = dateFormatter.date(from: beginAt) else {
+        guard let date = dateFormatter.date(from: beginAt ?? String()) else {
             return dateError
         }
         

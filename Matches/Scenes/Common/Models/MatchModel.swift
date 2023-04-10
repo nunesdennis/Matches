@@ -8,7 +8,7 @@
 import Foundation
 
 struct MatchModel: Decodable {
-    let beginAt: String
+    let beginAt: String?
     let detailedStats: Bool
     let draw: Bool
     let endAt: String?
@@ -24,10 +24,10 @@ struct MatchModel: Decodable {
     let name: String
     let numberOfGames: Int
     let opponents: [OpponentModel]
-    let originalScheduledAt: String
+    let originalScheduledAt: String?
     let rescheduled: Bool
     let results: [ResultModel]
-    let scheduledAt: String
+    let scheduledAt: String?
     let serie: SerieModel
     let serieId: Int
     let slug: String

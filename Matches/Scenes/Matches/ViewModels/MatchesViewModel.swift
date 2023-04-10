@@ -23,7 +23,7 @@ final class MatchesViewModel {
     
     // MARK: - Private Properties
     
-    private var sortBy: String?
+    private var sortBy: String = "status"
     private var pageNumber: Int = 1
     private var perPage: Int = 50
     private var params: MatchListParams {

@@ -9,7 +9,7 @@
 // MARK: - General
 "General.Alert.title" = "Atenção";
 "General.Alert.Button.title" = "Ok";
-"General.Date.error" = "Erro";
+"General.Date.error" = "Sem data";
 
 // MARK: - Matches
 "Matches.Navigation.title" = "Participantes";
