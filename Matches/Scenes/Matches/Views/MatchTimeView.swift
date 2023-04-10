@@ -27,7 +27,7 @@ final class MatchTimeView: UIView {
         label.textColor = viewModel.titleColor()
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: FontSize.base04, weight: .semibold)
-//        label.font = UIFont(name: "Roboto-Regular", size: FontSize.base04)
+        label.font = UIFont(name: "Roboto-Regular", size: FontSize.base04)
         
         return label
     }()

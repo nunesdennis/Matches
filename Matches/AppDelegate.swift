@@ -12,6 +12,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        fontFix()
         setupNavigationsAppearance()
         return true
     }
@@ -34,14 +35,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: - Navigation Appearance
 
 private extension AppDelegate {
+    func fontFix() {
+        let fonts = Bundle.main.urls(forResourcesWithExtension: "ttf", subdirectory: nil)
+        fonts?.forEach({ url in
+            CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+        })
+    }
+    
     func setupNavigationsAppearance() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white//,
-//            NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: 32.0)!
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: FontSize.base16)!
         ]
         UINavigationBar.appearance().titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor.white//,
-//            NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: 18.0)!
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: FontSize.base09)!
         ]
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)

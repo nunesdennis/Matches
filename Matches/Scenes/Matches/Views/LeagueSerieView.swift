@@ -30,7 +30,7 @@ final class LeagueSerieView: UIView {
         label.textColor = .white
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.font = UIFont(name: "Roboto-Regular", size: FontSize.base04)
+        label.font = UIFont(name: "Roboto-Regular", size: FontSize.base04)
         
         return label
     }()
@@ -68,6 +68,10 @@ final class LeagueSerieView: UIView {
     private func setupContraints() {
         addSubview(stackView)
 
+        NSLayoutConstraint.activate([
+            leagueSerieLabel.centerYAnchor.constraint(equalTo: leagueSerieImage.centerYAnchor)
+        ])
+        
         NSLayoutConstraint.activate([
             leagueSerieImage.heightAnchor.constraint(equalToConstant: Space.base08),
             leagueSerieImage.widthAnchor.constraint(equalToConstant: Space.base08)
