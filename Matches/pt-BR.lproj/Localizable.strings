@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  Matches
+
+  Created by Dennis Nunes on 07/04/23.
+  
+*/
+
+// MARK: - General
+"General.Alert.title" = "Atenção";
+"General.Alert.Button.title" = "Ok";
+"General.Date.error" = "Sem data";
+
+// MARK: - Matches
+"Matches.Navigation.title" = "Participantes";
+"Matches.TableView.MatchCell.Versus.title" = "VS";
+
+// MARK: - Match Time View
+"MatchTime.nowMessage" = "Agora";
+"MatchTime.todayMessage" = "Hoje";
