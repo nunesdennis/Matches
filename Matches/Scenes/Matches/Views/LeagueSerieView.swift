@@ -30,7 +30,7 @@ final class LeagueSerieView: UIView {
         label.textColor = .white
         label.textAlignment = .left
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "Roboto-Regular", size: FontSize.base04)
+        label.font = UIFont(name: FontName.robotoRegular, size: FontSize.base04)
         
         return label
     }()

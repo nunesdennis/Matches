@@ -13,6 +13,7 @@ final class MatchDetailsViewController: UIViewController {
     // MARK: - Constants
     
     var opponentVersusViewTopAnchor: CGFloat = Space.base08
+    let cellRowHeight: CGFloat = 60
     
     // MARK: - Properties
     
@@ -26,6 +27,19 @@ final class MatchDetailsViewController: UIViewController {
         }
         
         return OpponentVersusView(opponentVersusViewModel: viewModel)
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.rowHeight = cellRowHeight
+        tableView.register(MatchDetailsCell.self, forCellReuseIdentifier: String(describing: MatchDetailsCell.self))
+        tableView.backgroundColor = .clear
+        tableView.tableFooterView = UIView()
+        
+        return tableView
     }()
     
     // MARK: - Initialization
@@ -68,3 +82,25 @@ final class MatchDetailsViewController: UIViewController {
 }
 
 extension MatchDetailsViewController: MatchesViewControllerProtocol {}
+
+// MARK: - TableView
+
+extension MatchDetailsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: MatchDetailsCell.self), for: indexPath) as? MatchDetailsCell else {
+            return UITableViewCell()
+        }
+        
+        return cell
+    }
+}
+
+extension MatchDetailsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Intentionally empty
+    }
+}

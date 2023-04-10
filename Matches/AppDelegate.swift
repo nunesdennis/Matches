@@ -45,11 +45,11 @@ private extension AppDelegate {
     func setupNavigationsAppearance() {
         UINavigationBar.appearance().largeTitleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: FontSize.base16)!
+            NSAttributedString.Key.font: UIFont(name: FontName.robotoRegular, size: FontSize.base16)!
         ]
         UINavigationBar.appearance().titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont(name: "Roboto-Regular", size: FontSize.base09)!
+            NSAttributedString.Key.font: UIFont(name: FontName.robotoRegular, size: FontSize.base09)!
         ]
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)

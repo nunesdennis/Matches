@@ -34,7 +34,7 @@ final class OpponentVersusView: UIView {
         label.textColor = .white.withAlphaComponent(Alpha.half)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = UIFont(name: "Roboto-Regular", size: FontSize.base06)
+        label.font = UIFont(name: FontName.robotoRegular, size: FontSize.base06)
         
         return label
     }()

@@ -14,3 +14,7 @@ enum FontSize {
     static let base09: CGFloat = 18
     static let base16: CGFloat = 32
 }
+
+enum FontName {
+    static let robotoRegular = "Roboto-Regular"
+}
