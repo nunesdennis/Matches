@@ -57,8 +57,12 @@ final class MatchDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .nero
-        setupNavigation()
         setupConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigation()
     }
     
     // MARK: - Private Methods

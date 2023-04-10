@@ -55,10 +55,14 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .nero
-        setupNavigation()
         setupLargeCentralSpinner()
         setupConstraints()
         loadMatches()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupNavigation()
     }
     
     // MARK: - Private Methods

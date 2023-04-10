@@ -23,7 +23,6 @@ final class MatchesViewModel {
     
     // MARK: - Private Properties
     
-    private var matches: [MatchModel] = []
     private var sortBy: String?
     private var pageNumber: Int = 1
     private var perPage: Int = 50
@@ -49,7 +48,6 @@ final class MatchesViewModel {
     }
     
     private func createCellViewModels(models: [MatchModel]) -> [CardViewModel] {
-        matches.append(contentsOf: models)
         return models.compactMap { model in
             CardViewModel(matchModel: model)
         }
