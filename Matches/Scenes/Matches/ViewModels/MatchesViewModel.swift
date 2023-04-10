@@ -10,6 +10,7 @@ import UIKit
 protocol MatchesViewModelProtocol {
     var navigationTitle: String { get }
     func loadMatches(_ completion: @escaping (Result<[CardViewModel], MatchesError>) -> Void)
+    func openDetails(of match: MatchModel)
 }
 
 final class MatchesViewModel {
@@ -22,6 +23,7 @@ final class MatchesViewModel {
     
     // MARK: - Private Properties
     
+    private var matches: [MatchModel] = []
     private var sortBy: String?
     private var pageNumber: Int = 1
     private var perPage: Int = 50
@@ -47,6 +49,7 @@ final class MatchesViewModel {
     }
     
     private func createCellViewModels(models: [MatchModel]) -> [CardViewModel] {
+        matches.append(contentsOf: models)
         return models.compactMap { model in
             CardViewModel(matchModel: model)
         }
@@ -69,5 +72,9 @@ extension MatchesViewModel: MatchesViewModelProtocol {
                 completion(.failure(matchesError))
             }
         }
+    }
+    
+    func openDetails(of match: MatchModel) {
+        coordinator.goToMatchDetails(match)
     }
 }

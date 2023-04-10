@@ -27,6 +27,7 @@ class MatchCell: UITableViewCell {
     func setupView(with viewModel: CardViewModel){
         self.viewModel = viewModel
         backgroundColor = .clear
+        selectionStyle = .none
         contentView.backgroundColor = .clear
         needsUpdateConstraints()
         setupContraints()

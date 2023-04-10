@@ -12,11 +12,15 @@ class CardViewModel {
     
     static let imagePlaceHolderName = "teamPlaceHolder"
     
-    // MARK: - Private Properties
+    // MARK: - Static Properties
     
     static let placeHolder = UIImage(named: imagePlaceHolderName) ?? UIImage()
     
-    // MARK: - Public Properties
+    // MARK: - Private Properties
+    
+    private let matchModel: MatchModel
+    
+    // MARK: - Properties
     
     let opponentVersusViewModel: OpponentVersusViewModel
     let leagueSerieViewModel: LeagueSerieViewModel
@@ -25,6 +29,7 @@ class CardViewModel {
     // MARK: - Initialization
     
     init?(matchModel: MatchModel) {
+        self.matchModel = matchModel
         guard let versusViewModel = CardViewModel.createOpponentVersusViewModel(matchModel: matchModel),
               let leagueViewModel = CardViewModel.createLeagueSerieViewModel(matchModel: matchModel) else {
             return nil
@@ -60,5 +65,11 @@ class CardViewModel {
                      imageUrl: opponent.imageUrl,
                      id: opponent.id,
                      name: opponent.name)
+    }
+    
+    // MARK: - Public Methods
+    
+    func getMatchDetails() -> MatchModel {
+        return matchModel
     }
 }

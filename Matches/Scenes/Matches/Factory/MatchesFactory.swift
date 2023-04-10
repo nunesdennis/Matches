@@ -8,8 +8,7 @@
 import Foundation
 
 struct MatchesFactory {
-    static func make(delegate: MatchesCoordinatorDelegate) -> MatchesViewControllerProtocol {
-        let coordinator = MatchesCoordinator()
+    static func make(coordinator: MatchesCoordinatorProtocol) -> MatchesViewControllerProtocol {
         let service = MatchesService()
         let viewModel = MatchesViewModel(service: service, coordinator: coordinator)
         let controller = MatchesViewController(viewModel: viewModel)

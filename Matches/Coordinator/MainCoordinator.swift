@@ -8,14 +8,13 @@
 import UIKit
 
 class MainCoordinator: CoordinatorProtocol {
-    
     // MARK: - Properties
     var parentCoordinator: CoordinatorProtocol?
     var childCoordinators: [CoordinatorProtocol] = []
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
     
     // MARK: - Initialization
-    required init(navigationController: UINavigationController) {
+    required init(navigationController: UINavigationController?) {
         self.navigationController = navigationController
     }
     
@@ -26,8 +25,9 @@ class MainCoordinator: CoordinatorProtocol {
     // MARK: - Main Scene
     
     private func goToMainViewController() {
-        let viewController = MatchesFactory.make(delegate: self)
-        navigationController.setViewControllers([viewController], animated: true)
+        let coordinator = MatchesCoordinator(navigationController: navigationController)
+        childCoordinators.append(coordinator)
+        coordinator.start()
     }
 }
 

@@ -23,7 +23,6 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.allowsSelection = false
         tableView.rowHeight = cellRowHeight
         tableView.register(MatchCell.self, forCellReuseIdentifier: String(describing: MatchCell.self))
         tableView.backgroundView = spinner
@@ -38,7 +37,7 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
     
     // MARK: - Properties
     
-    var matches: [CardViewModel] = []
+    var cardsViewModel: [CardViewModel] = []
     var viewModel: MatchesViewModelProtocol
     
     // MARK: - Initialization
@@ -83,8 +82,8 @@ class MatchesViewController: UIViewController, ViewControllerEssentialProtocol {
     private func loadMatches() {
         viewModel.loadMatches { [unowned self] result in
             switch result {
-            case .success(let matchlist):
-                matches.append(contentsOf: matchlist)
+            case .success(let cardViewModelList):
+                cardsViewModel.append(contentsOf: cardViewModelList)
                 
                 DispatchQueue.main.async { [unowned self] in
                     tableView.refreshControl?.endRefreshing()
@@ -110,7 +109,7 @@ extension MatchesViewController: MatchesViewControllerProtocol {}
 
 extension MatchesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        matches.count
+        cardsViewModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,8 +117,8 @@ extension MatchesViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        let match = matches[indexPath.row]
-        cell.setupView(with: match)
+        let cardViewModel = cardsViewModel[indexPath.row]
+        cell.setupView(with: cardViewModel)
         
         return cell
     }
@@ -127,6 +126,8 @@ extension MatchesViewController: UITableViewDataSource {
 
 extension MatchesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: Needs to be done
+        let cardViewModel = cardsViewModel[indexPath.row]
+        let match = cardViewModel.getMatchDetails()
+        viewModel.openDetails(of: match)
     }
 }
