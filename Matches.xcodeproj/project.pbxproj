@@ -55,6 +55,8 @@
 		B35DF10B29E48DE300EBA280 /* MatchDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35DF10A29E48DE300EBA280 /* MatchDetailsViewController.swift */; };
 		B35DF10D29E4B29800EBA280 /* MatchDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35DF10C29E4B29800EBA280 /* MatchDetailsCell.swift */; };
 		B35DF10F29E4B2CA00EBA280 /* MatchDetailsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35DF10E29E4B2CA00EBA280 /* MatchDetailsCellViewModel.swift */; };
+		B36D3F7429EACC6100FE29A1 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D3F7329EACC6100FE29A1 /* UIView+Extensions.swift */; };
+		B36D3F7629EACD3700FE29A1 /* LoadedNumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36D3F7529EACD3700FE29A1 /* LoadedNumberView.swift */; };
 		B3D6E12229DEF41C0031EDF0 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D6E12129DEF41C0031EDF0 /* Colors.swift */; };
 		B3D6E13129DF04840031EDF0 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3D6E12829DF01360031EDF0 /* Roboto-Black.ttf */; };
 		B3D6E13229DF04870031EDF0 /* Roboto-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B3D6E12C29DF01360031EDF0 /* Roboto-BlackItalic.ttf */; };
@@ -142,6 +144,8 @@
 		B35DF10A29E48DE300EBA280 /* MatchDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewController.swift; sourceTree = "<group>"; };
 		B35DF10C29E4B29800EBA280 /* MatchDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsCell.swift; sourceTree = "<group>"; };
 		B35DF10E29E4B2CA00EBA280 /* MatchDetailsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsCellViewModel.swift; sourceTree = "<group>"; };
+		B36D3F7329EACC6100FE29A1 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		B36D3F7529EACD3700FE29A1 /* LoadedNumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedNumberView.swift; sourceTree = "<group>"; };
 		B3D6E12129DEF41C0031EDF0 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B3D6E12529DF01350031EDF0 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		B3D6E12629DF01350031EDF0 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 			children = (
 				B35CF2BF29E2F5890047E781 /* Date+Extensions.swift */,
 				B35CF2C129E2FE390047E781 /* UIColor+Extensions.swift */,
+				B36D3F7329EACC6100FE29A1 /* UIView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 				B35CF29C29E07B5A0047E781 /* LeagueSerieView.swift */,
 				B35CF2A029E07CA50047E781 /* MatchTimeView.swift */,
 				B35CF2B729E1DC2A0047E781 /* CardView.swift */,
+				B36D3F7529EACD3700FE29A1 /* LoadedNumberView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -615,6 +621,7 @@
 				B35CF2C429E317CD0047E781 /* ImageFetcher.swift in Sources */,
 				B356102029DDF2E4006612B1 /* EndpointProtocol.swift in Sources */,
 				B35DF10F29E4B2CA00EBA280 /* MatchDetailsCellViewModel.swift in Sources */,
+				B36D3F7429EACC6100FE29A1 /* UIView+Extensions.swift in Sources */,
 				B35DF10B29E48DE300EBA280 /* MatchDetailsViewController.swift in Sources */,
 				B356101429DDB380006612B1 /* MatchesViewModel.swift in Sources */,
 				B356101929DDE20E006612B1 /* APIClient.swift in Sources */,
@@ -634,6 +641,7 @@
 				B35CF2A529E07E740047E781 /* CardViewModel.swift in Sources */,
 				B35CF28629E065730047E781 /* MatchesError.swift in Sources */,
 				B35CF2C029E2F5890047E781 /* Date+Extensions.swift in Sources */,
+				B36D3F7629EACD3700FE29A1 /* LoadedNumberView.swift in Sources */,
 				B35CF29729E075C90047E781 /* OpponentViewModel.swift in Sources */,
 				B356101C29DDE306006612B1 /* MatchesService.swift in Sources */,
 				B35CF29129E06FE60047E781 /* OpponentView.swift in Sources */,

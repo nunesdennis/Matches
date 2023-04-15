@@ -35,6 +35,17 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
         return tableView
     }()
     
+    private lazy var loadedNumberView: LoadedNumberView = {
+        let view = LoadedNumberView(loadedNumber: 0)
+        view.alpha = 0.0
+        
+        return view
+    }()
+    
+    // MARK: - Private Properties
+    
+    private var isLoading = false
+    
     // MARK: - Properties
     
     var cardsViewModel: [CardViewModel] = []
@@ -69,6 +80,14 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
 
     private func setupConstraints() {
         view.addSubview(tableView)
+        view.addSubview(loadedNumberView)
+        
+        NSLayoutConstraint.activate([
+            loadedNumberView.heightAnchor.constraint(equalToConstant: 30.0),
+            loadedNumberView.widthAnchor.constraint(equalToConstant: 70.0),
+            loadedNumberView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            loadedNumberView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30.0)
+        ])
         
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -83,7 +102,8 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    private func loadMatches() {
+    private func loadMatches(didPullToRefresh: Bool = false) {
+        isLoading = true
         viewModel.loadMatches { [unowned self] result in
             switch result {
             case .success(let cardViewModelList):
@@ -93,17 +113,29 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
                     tableView.refreshControl?.endRefreshing()
                     tableView.reloadData()
                     spinner.stopAnimating()
+                    isLoading = false
+                    if didPullToRefresh {
+                        showLoadedView(with: cardViewModelList.count)
+                    }
                 }
                 
             case .failure(let error):
+                isLoading = false
                 showAlert(with: error.title, message: error.description, andButtonTitle: error.buttonName)
             }
         }
     }
     
+    private func showLoadedView(with number: Int) {
+        loadedNumberView.updateNumber(number)
+        loadedNumberView.fadeIn() { [unowned self] (finished: Bool) -> Void in
+            loadedNumberView.fadeOut()
+        }
+    }
+    
     @objc
     private func pulledToRefresh() {
-        loadMatches()
+        loadMatches(didPullToRefresh: true)
     }
 }
 
@@ -133,5 +165,15 @@ extension MatchesViewController: UITableViewDelegate {
         let cardViewModel = cardsViewModel[indexPath.row]
         let match = cardViewModel.getMatchDetails()
         viewModel.openDetails(of: match)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let shouldLoad = offsetY > (contentHeight - scrollView.frame.height)
+        
+        if shouldLoad && !isLoading {
+            loadMatches()
+        }
     }
 }
