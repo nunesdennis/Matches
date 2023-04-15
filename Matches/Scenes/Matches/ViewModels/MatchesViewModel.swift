@@ -9,7 +9,8 @@ import UIKit
 
 protocol MatchesViewModelProtocol {
     var navigationTitle: String { get }
-    func loadMatches(_ completion: @escaping (Result<[CardViewModel], MatchesError>) -> Void)
+    func loadMatches(_ didPullToRefresh: Bool, completion: @escaping (Result<[CardViewModel], MatchesError>) -> Void)
+    
     func openDetails(of match: MatchModel)
 }
 
@@ -53,12 +54,17 @@ final class MatchesViewModel {
             CardViewModel(matchModel: model)
         }
     }
+    
+    private func resetPages() {
+        pageNumber = 1
+    }
 }
 
 extension MatchesViewModel: MatchesViewModelProtocol {
     // MARK: - Public Methods
     
-    func loadMatches(_ completion: @escaping (Result<[CardViewModel], MatchesError>) -> Void) {
+    func loadMatches(_ didPullToRefresh: Bool, completion: @escaping (Result<[CardViewModel], MatchesError>) -> Void) {
+        if didPullToRefresh { resetPages() }
         service.fetchMatchList(params: params) {[unowned self] result in
             switch result {
             case .success(let matches):

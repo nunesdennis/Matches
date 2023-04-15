@@ -35,6 +35,10 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
         return tableView
     }()
     
+    // MARK: - Private Properties
+    
+    private var isLoading = false
+    
     // MARK: - Properties
     
     var cardsViewModel: [CardViewModel] = []
@@ -83,19 +87,29 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-    private func loadMatches() {
-        viewModel.loadMatches { [unowned self] result in
+    private func updateList(_ needsReset: Bool, modelList: [CardViewModel]) {
+        if needsReset {
+            cardsViewModel = modelList
+        } else {
+            cardsViewModel.append(contentsOf: modelList)
+        }
+    }
+    
+    private func loadMatches(didPullToRefresh: Bool = false) {
+        isLoading = true
+        viewModel.loadMatches(didPullToRefresh) { [unowned self] result in
             switch result {
             case .success(let cardViewModelList):
-                cardsViewModel.append(contentsOf: cardViewModelList)
-                
+                updateList(didPullToRefresh, modelList: cardViewModelList)
                 DispatchQueue.main.async { [unowned self] in
                     tableView.refreshControl?.endRefreshing()
                     tableView.reloadData()
                     spinner.stopAnimating()
+                    isLoading = false
                 }
                 
             case .failure(let error):
+                isLoading = false
                 showAlert(with: error.title, message: error.description, andButtonTitle: error.buttonName)
             }
         }
@@ -103,7 +117,7 @@ final class MatchesViewController: UIViewController, ViewControllerEssentialProt
     
     @objc
     private func pulledToRefresh() {
-        loadMatches()
+        loadMatches(didPullToRefresh: true)
     }
 }
 
@@ -133,5 +147,15 @@ extension MatchesViewController: UITableViewDelegate {
         let cardViewModel = cardsViewModel[indexPath.row]
         let match = cardViewModel.getMatchDetails()
         viewModel.openDetails(of: match)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let shouldLoad = offsetY > (contentHeight - scrollView.frame.height)
+        
+        if shouldLoad && !isLoading {
+            loadMatches()
+        }
     }
 }
