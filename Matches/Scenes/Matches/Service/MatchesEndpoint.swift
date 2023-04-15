@@ -13,6 +13,7 @@ struct MatchesEndpoint: EndpointProtocol {
     
     var queryItems: [URLQueryItem] {
         var query: [URLQueryItem] = []
+        if let filter = filterQuery() { query.append(filter) }
         if let sort = sortQuery() { query.append(sort) }
         if let page = pageQuery() { query.append(page) }
         if let perPage = perPageQuery() { query.append(perPage) }
@@ -31,6 +32,14 @@ struct MatchesEndpoint: EndpointProtocol {
     }
     
     // MARK: - Private Methods
+    private func filterQuery() -> URLQueryItem? {
+        guard let filter = params?.filter else {
+            return nil
+        }
+        
+        return URLQueryItem(name: "filter[status]", value: filter)
+    }
+    
     private func sortQuery() -> URLQueryItem? {
         guard let sort = params?.sort else {
             return nil

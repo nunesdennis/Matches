@@ -14,17 +14,17 @@ final class MatchCell: UITableViewCell {
     
     // MARK: - Subviews
     
-    private lazy var cardView: CardView? = {
+    private var cardView: CardView? {
         guard let viewModel = viewModel else {
             return nil
         }
         
         return CardView(with: viewModel)
-    }()
+    }
     
     // MARK: - Public Methods
 
-    func setupView(with viewModel: CardViewModel){
+    func setupView(with viewModel: CardViewModel, andIndex index: Int){
         self.viewModel = viewModel
         backgroundColor = .clear
         selectionStyle = .none
@@ -39,7 +39,6 @@ final class MatchCell: UITableViewCell {
         guard let cardView = cardView else {
             return
         }
-        
         contentView.addSubview(cardView)
         
         NSLayoutConstraint.activate([

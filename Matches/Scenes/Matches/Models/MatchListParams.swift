@@ -8,6 +8,7 @@
 import Foundation
 
 struct MatchListParams {
+    let filter: String?
     let sort: String?
     let page: Int?
     let perPage: Int?

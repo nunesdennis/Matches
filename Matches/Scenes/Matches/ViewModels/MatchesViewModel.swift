@@ -23,11 +23,12 @@ final class MatchesViewModel {
     
     // MARK: - Private Properties
     
-    private var sortBy: String = "status"
+    private var filter: String = "running,not_started"
+    private var sortBy: String = "begin_at,scheduled_at"
     private var pageNumber: Int = 1
     private var perPage: Int = 50
     private var params: MatchListParams {
-        MatchListParams(sort: sortBy, page: pageNumber, perPage: perPage)
+        MatchListParams(filter: filter, sort: sortBy, page: pageNumber, perPage: perPage)
     }
     
     // MARK: - Properties
